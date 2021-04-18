@@ -1,0 +1,19 @@
+service: sls-appsync-backend
+frameworkVersion: '2'
+
+plugins:
+  - serverless-appsync-plugin
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  lambdaHashingVersion: 20201221
+
+package:
+  exclude:
+    - package.json
+    - package-lock.json
+
+custom:
+  appSync:
+    - ${file(sls/appsync-api.yml)}
